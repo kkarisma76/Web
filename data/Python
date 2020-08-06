@@ -1,0 +1,15 @@
+Python 3.0 final was released on December 3rd, 2008.
+
+Python 3.0 (a.k.a. "Python 3000" or "Py3k") is a new version of the language that is incompatible with the 2.x line of releases. The language is mostly the same, but many details, especially how built-in objects like dictionaries and strings work, have changed considerably, and a lot of deprecated features have finally been removed. Also, the standard library has been reorganized in a few prominent places.
+
+Here are some Python 3.0 resources:
+
+What's new in Python 3000
+Python 3.0 change log.
+Online Documentation
+Read more in PEP 3000
+To help out, sign up for python-3000@python.org
+Conversion tool for Python 2.x code: 2to3
+Please report bugs at http://bugs.python.org
+
+Python 3.0 Release: 03-Dec-2008
