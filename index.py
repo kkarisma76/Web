@@ -3,15 +3,19 @@ print("content-type:text/html; charset=utf-8")
 print() # 한줄 띄워야 해서 들어가는 것임
 import cgi, os
 
-files = os.listdir('data')
-listStr = ''
-for item in files:
-  listStr = listStr + '<li><a href="index.py?id={name}">{name}</a></li>'.format(name=item)
+def getList():
+  files = os.listdir('data')
+  listStr = ''
+  for item in files:
+    listStr = listStr + '<li><a href="index.py?id={name}">{name}</a></li>'.format(name=item)
+  return listStr
   
 form = cgi.FieldStorage()
 if 'id' in form:
   pageId = form["id"].value
   description = open('data/'+pageId, 'r').read()
+  description = description.replace('<', '&lt;')
+  description = description.replace('>', '&gt;')
   update_link = '<a href="update.py?id={}">update</a>'.format(pageId)
   delete_action = '''
     <form action="process_delete.py" method="post">
@@ -42,4 +46,9 @@ print('''<!DOCTYPE html>
   <p> {desc} </p>
 </body>
 </html>
-'''.format(title=pageId, desc=description, listStr=listStr, update_link=update_link, delete_action=delete_action))
+'''.format(
+    title=pageId, 
+    desc=description, 
+    listStr=getList(), 
+    update_link=update_link, 
+    delete_action=delete_action))

@@ -12,6 +12,8 @@ form = cgi.FieldStorage()
 if 'id' in form:
   pageId = form["id"].value
   description = open('data/'+pageId, 'r').read()
+  description = description.replace('<', '&lt;')
+  description = description.replace('>', '&gt;')
 else:
   pageId = 'Welcome'
   description = 'Hello, web'
